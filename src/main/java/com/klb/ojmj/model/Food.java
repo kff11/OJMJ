@@ -18,8 +18,8 @@ public class Food implements Serializable {
     @Id
     private String food_id;
     private String food_name;
-    private String food_type_one;
-    private String food_type_second;
-    private String food_type_third;
+    private FoodCategory food_main_category;
+    private FoodCategory food_middle_category;
+    private FoodCategory food_sub_category;
     private Long food_select_count;
 }
