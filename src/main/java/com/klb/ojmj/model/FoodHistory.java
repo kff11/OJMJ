@@ -1,5 +1,6 @@
 package com.klb.ojmj.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.klb.ojmj.BaseTimeEntity;
 import lombok.AllArgsConstructor;
@@ -22,12 +23,12 @@ public class FoodHistory extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "food_id")
-    @JsonManagedReference
+    @JsonBackReference
     private Food food;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonBackReference
     private User user;
 
 }

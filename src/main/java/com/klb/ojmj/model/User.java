@@ -1,9 +1,11 @@
 package com.klb.ojmj.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -22,6 +24,7 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private UserStatus user_status;
 
-    @OneToMany(mappedBy = "food_history", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<FoodHistory> foodHistoryList;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<FoodHistory> foodHistoryList = new ArrayList<>();
 }

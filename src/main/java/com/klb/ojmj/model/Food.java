@@ -21,5 +21,7 @@ public class Food implements Serializable {
     private FoodCategory food_main_category;
     private FoodCategory food_middle_category;
     private FoodCategory food_sub_category;
+    @Enumerated(EnumType.STRING)
+    private FoodStatus food_status;
     private Long food_select_count;
 }
