@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "server": "nodemon server/server.js",
+    "server": "nodemon ../new-webapp/server/server.js",
     "react": "react-scripts start",
     "start": "concurrently \"yarn react\" \"yarn server\""
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "concurrently": "^6.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

@@ -2,8 +2,8 @@ import React from "react";
 
 class MainPage extends React.Component {
 
-    constructor(state) {
-        super(state);
+    constructor(props) {
+        super(props);
 
         this.state = {
             text: "연어 덮밥",
