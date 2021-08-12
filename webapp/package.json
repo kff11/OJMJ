@@ -1,6 +1,6 @@
 {
-  "name": "webapp",
-  "version": "0.0.1",
+  "name": "new-webapp",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "server": "nodemon ../new-webapp/server/server.js",
@@ -8,17 +8,24 @@
     "start": "concurrently \"yarn react\" \"yarn server\""
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.6.1",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "concurrently": "^6.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "^4.17.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3",
+    "react-redux": "^7.2.3",
+    "react-scripts": "4.0.3",
     "web-vitals": "^2.1.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
