@@ -22,7 +22,7 @@ class MainPage extends React.Component {
             .then(res => {
                 if(res.data === 1) {
                     this.setState({
-                        text: "김치맛잇어요"
+                        text: "김치맛있어요"
                     });
                 }
             }).catch(err => {
