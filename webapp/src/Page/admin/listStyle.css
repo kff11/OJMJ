@@ -1,0 +1,16 @@
+.food {
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.table-tr{
+    display: flex;
+    padding: 5px;
+}
+
+.food .food-name {
+    flex-grow: 1;
+}
