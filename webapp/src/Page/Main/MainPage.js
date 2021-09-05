@@ -17,7 +17,7 @@ class MainPage extends React.Component {
         });
     };
 
-    hitFood = () => {
+    /*hitFood = () => {
         axios.get('http://localhost:8080/api/food/KOR002')
             .then(res => {
                 if(res.data === 1) {
@@ -28,6 +28,21 @@ class MainPage extends React.Component {
             }).catch(err => {
             throw err;
         });
+    }*/
+    hitFood = () => {
+        axios.post('http://52.78.196.112:8080/api/food', {
+            food_id: 'test',
+            food_main_category: 'KoreaFood',
+            food_middle_category: 'BrothFood',
+            food_sub_category: 'rice',
+            food_name: '국밥'
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     render() {
