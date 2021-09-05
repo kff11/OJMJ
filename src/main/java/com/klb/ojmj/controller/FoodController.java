@@ -1,5 +1,6 @@
 package com.klb.ojmj.controller;
 
+import com.klb.ojmj.model.Food;
 import com.klb.ojmj.service.FoodService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,5 +15,10 @@ public class FoodController {
     @GetMapping("/{id}")
     public ResponseEntity<Integer> hitFood(@PathVariable String id) {
         return ResponseEntity.ok(foodService.hitFood(id));
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Food> addFood(@RequestBody Food food) {
+        return ResponseEntity.ok(foodService.addFood(food));
     }
 }

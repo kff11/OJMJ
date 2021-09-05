@@ -26,7 +26,10 @@ public class FoodService {
         if(result < 0) {
             throw new EntityNotFoundException("ID에 맞는 음식을 찾을 수 없습니다.");
         }
-
         return result;
+    }
+
+    public Food addFood(Food food) {
+        return foodRepository.save(food);
     }
 }
