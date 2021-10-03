@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,10 @@ public class FoodService {
         return food.orElseThrow(() -> new EntityNotFoundException("ID에 맞는 음식을 찾을 수 없습니다."));
     }
 
+    public List<Food> getAllFoods() {
+        return foodRepository.findAll();
+    }
+
     @Transactional
     public int hitFood(String id) {
         int result = foodRepository.hitFood(id);
@@ -31,5 +36,9 @@ public class FoodService {
 
     public Food addFood(Food food) {
         return foodRepository.save(food);
+    }
+
+    public void deleteBook(String id) {
+        foodRepository.deleteById(id);
     }
 }

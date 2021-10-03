@@ -17,8 +17,22 @@ public class FoodController {
         return ResponseEntity.ok(foodService.hitFood(id));
     }
 
+    @GetMapping("")
+    public ResponseEntity getFoods(@RequestParam(required = false) String id) {
+        if (id == null) {
+            return ResponseEntity.ok(foodService.getAllFoods());
+        }
+        return ResponseEntity.ok(foodService.getFood(id));
+    }
+
     @PostMapping("")
     public ResponseEntity<Food> addFood(@RequestBody Food food) {
         return ResponseEntity.ok(foodService.addFood(food));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteFood(@PathVariable String id) {
+        foodService.deleteBook(id);
+        return ResponseEntity.ok().build();
     }
 }
