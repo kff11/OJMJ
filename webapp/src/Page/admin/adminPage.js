@@ -1,31 +1,41 @@
 import React, {useState} from "react";
 import Food from './listRepetition.js';
+import './listStyle.css';
 
 function AdminPage() {
     const [foodName, setFoodName] = useState('');
     const [foodCategory, setFoodCategory] = useState('');
     const [foods, setFoods] = useState([
         {name: '비빔밥', category: '한식'},
-        {name: '짱장면', category: '중식'},
-        {name: '사케동', category: '일식'},
-        {name: '까르보나라', category: '양식'},
-        {name: '떡볶이', category: '분식'}
     ]);
 
-    const renderFoods = foods.map(food => {
+    const removeFood = (id) => {
+        setFoods(foods.filter(food => {
+            return food.id !== id;
+        }));
+    };
+
+    const renderFoods = foods.length ? foods.map(food => {
         return (
-            <Food food={food} key={foods.name}/>
+            <Food
+                food={food}
+                key={foods.name}
+                removeFood={removeFood}
+            />
         );
-    });
+    }):'추가된 음식이 없습니다';
 
     const addFood = (event) => {
-      event.preventDefault();
-      setFoods([
-          ...foods,
-          {
-          name: foodName,
-          category: foodCategory
-      }])
+        event.preventDefault();
+        setFoods([
+            ...foods,
+            {
+                id: Date.now(),
+                name: foodName,
+                category: foodCategory
+            }]);
+        setFoodName('');
+        setFoodCategory('');
     };
 
     return (
@@ -47,18 +57,17 @@ function AdminPage() {
                     <button type="submit">추가</button>
                 </form>
             </div>
-            <div className="food">
-                <table>
-                    <tr>
-                        <th>이름</th>
-                        <th>카테고리1</th>
-                    </tr>
-                    <tr>
-                        <th>{renderFoods}</th>
-                        <th>{renderFoods}</th>
-                    </tr>
-                </table>
-            </div>
+            <table className="food">
+                <tr>
+                    <th>No.</th>
+                    <th>이름</th>
+                    <th>카테고리1</th>
+                    <th>삭제</th>
+                </tr>
+                <tr>
+                    {renderFoods}
+                </tr>
+            </table>
         </div>
     );
 }

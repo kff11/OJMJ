@@ -1,12 +1,15 @@
 import React from 'react';
-import './listStyle.css';
 
-const Food = ({food}) => {
+const Food = ({food , removeFood}) => {
     return (
-        <div className="table-tr">
-            <div className="food-name">{food.name}</div>
-            <div className="food-category">{food.category}</div>
-        </div>
+        <React.Fragment>
+            <td>num</td>
+            <td className="food-name">{food.name}</td>
+            <td className="food-category">{food.category}</td>
+            <td>
+                <button onClick={() => removeFood(food.id)}>삭제</button>
+            </td>
+        </React.Fragment>
     );
 };
 

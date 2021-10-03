@@ -1,16 +1,10 @@
 .food {
-    display: flex;
-    margin: 5px;
-    padding: 5px;
-    align-items: center;
-    border: 1px solid black;
+    width: 100%;
+    border: 1px solid #444444;
+    border-collapse: collapse;
 }
 
-.table-tr{
-    display: flex;
-    padding: 5px;
-}
-
-.food .food-name {
-    flex-grow: 1;
+th, td {
+    border: 1px solid #444444;
+    padding: 10px;
 }
