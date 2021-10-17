@@ -1,13 +1,19 @@
 import React, {useState} from "react";
+import { useTable } from "react-table";
+import { columns, data } from "./foodDataSource";
 import Food from './listRepetition.js';
 import './listStyle.css';
+import axios from "axios";
 
 function AdminPage() {
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,
+    } = useTable({ columns, data,});
     const [foodName, setFoodName] = useState('');
     const [foodCategory, setFoodCategory] = useState('');
     const [foods, setFoods] = useState([
         {name: '비빔밥', category: '한식'},
     ]);
+
 
     const removeFood = (id) => {
         setFoods(foods.filter(food => {
@@ -57,6 +63,29 @@ function AdminPage() {
                     <button type="submit">추가</button>
                 </form>
             </div>
+            <table {...getTableProps()} className="food">
+                <thead>
+                {headerGroups.map(headerGroup => (
+                    <tr {...headerGroup.getHeaderGroupProps()}>
+                        {headerGroup.headers.map(column => (
+                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                        ))}
+                    </tr>
+                ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                {rows.map((row, i) => {
+                    prepareRow(row)
+                    return (
+                        <tr {...row.getRowProps()}>
+                            {row.cells.map(cell => {
+                                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                            })}
+                        </tr>
+                    )
+                })}
+                </tbody>
+            </table>
             <table className="food">
                 <tr>
                     <th>No.</th>
