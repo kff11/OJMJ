@@ -21,6 +21,7 @@ export const columns = [
 
 export const data = [
     {
+        number: '1',
         name: '비빔밥',
         category: '한식'
     },
