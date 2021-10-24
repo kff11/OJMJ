@@ -18,20 +18,19 @@ class MainPage extends React.Component {
     };
 
     hitFood = () => {
-        axios.get('http://52.78.196.112:8080/api/food/KOR002', {
+        axios.get('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food/KOR002', {
             food_id: 'test',
             food_main_category: 'KoreaFood',
             food_middle_category: 'BrothFood',
             food_sub_category: 'rice',
             food_name: '국밥'
-        })
-            .then(respone => {
-                if (respone.data === 1) {
-                    this.setState({
-                        text: "김치맛있어요"
-                    });
-                }
-            }).catch(err => {
+        }).then(res => {
+            if (res.data === 1) {
+                this.setState({
+                    text: "김치맛있어요"
+                });
+            }
+        }).catch(err => {
             throw err;
         });
     }
