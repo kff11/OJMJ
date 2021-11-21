@@ -1,0 +1,8 @@
+input {
+    margin: 10px;
+}
+
+.error_state {
+    color: red;
+}
+
