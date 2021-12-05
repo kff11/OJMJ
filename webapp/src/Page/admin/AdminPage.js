@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Food from './ListRepetition.js';
 import './AdminPage.css';
 import './ListStyle.css';
+import axios from "axios";
 
 import {useDispatch} from "react-redux";
 import {saveFood} from "../../actions";
@@ -20,18 +21,19 @@ function AdminPage() {
         event.preventDefault();
         if (validateForm()) {
             const inputData = {
-                foodId: '',
-                name: foodName,
-                categories: foodCategory
+                food_id: '',
+                food_name: foodName,
+                food_main_category: foodCategory
             };
 
             dispatch(saveFood(inputData));
 
             resetErrors();
             resetForm();
-        }
-        ;
+        };
     }
+
+
     const validateForm = () => {
         resetErrors();
 
@@ -61,26 +63,32 @@ function AdminPage() {
     };
 
     return (
-        <div>
+        <div className="adminPage">
             <div>
                 <form onSubmit={addFood}>
-                    <input
-                        type="text"
-                        value={foodName}
-                        placeholder="음식 이름"
-                        onChange={e => setFoodName(e.target.value)}
-                    />
-                    <div className="error_state">
-                        {nameError}
+                    <div className="input_name">
+                        <h5>음식 이름</h5>
+                        <input
+                            type="text"
+                            value={foodName}
+                            placeholder="음식 이름"
+                            onChange={e => setFoodName(e.target.value)}
+                        />
+                        <div className="error_state">
+                            {nameError}
+                        </div>
                     </div>
-                    <input
-                        type="text"
-                        value={foodCategory}
-                        placeholder="카테고리"
-                        onChange={e => setFoodCategory(e.target.value)}
-                    />
-                    <div className="error_state">
-                        {categoryError}
+                    <div className="input_category">
+                        <h5>카테고리</h5>
+                        <input
+                            type="text"
+                            value={foodCategory}
+                            placeholder="카테고리"
+                            onChange={e => setFoodCategory(e.target.value)}
+                        />
+                        <div className="error_state">
+                            {categoryError}
+                        </div>
                     </div>
                     <button type="submit">
                         추가

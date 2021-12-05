@@ -1,30 +1,36 @@
-import {DELETE_FOOD, SAVE_FOOD} from '../actions/index';
-
+import {DELETE_FOOD, GET_FOOD, SAVE_FOOD} from '../actions/index';
 const initialState = {
-    lastId: 1,
     foods: [
         {
-            foodId: 1,
-            name: '음식명',
-            categories: '카테고리'
+            food_id: 1,
+            food_name: '음식명',
+            food_main_category: '카테고리'
         }
     ]
 }
 
 export default function foodReducer(state = initialState, action) {
-    switch (action.type){
-        case SAVE_FOOD:
+    switch (action.type) {
+        case GET_FOOD:
+            console.log(action);
             return {
-                lastId: state.lastId + 1,
-                foods: state.foods.concat({
-                    ...action.saveData,
-                    foodId: state.lastId + 1,
-                })
+                foods: action.data
+            }
+        case SAVE_FOOD:
+            console.log("저장");
+            console.log(action);
+            console.log(state);
+            console.log("저장 끝");
+            console.log(state.foods.concat({...action.saveData}));
+
+            return {
+                foods: state.foods.concat(action.saveData)
             }
         case DELETE_FOOD:
             return {
-                ...state, foods: state.foods.filter(row =>
-                row.foodId !== action.foodId)
+                ...state,
+                foods: state.foods.filter(row =>
+                    row.food_id !== action.food_id)
             }
         default:
             return state
