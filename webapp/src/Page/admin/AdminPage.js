@@ -1,17 +1,18 @@
 import React, {useEffect, useState} from "react";
-import Food from './ListRepetition.js';
+import ListRepetition from './ListRepetition.js';
 import './AdminPage.css';
 import './ListStyle.css';
-import axios from "axios";
 
 import {useDispatch} from "react-redux";
-import {saveFood} from "../../actions";
+import {getFood, saveFood} from "../../actions";
 
 function AdminPage() {
+    const [foodId, setFoodId] = useState('');
     const [foodName, setFoodName] = useState('');
     const [foodCategory, setFoodCategory] = useState('');
 
     //Error
+    const [idError, setIdError] = useState('');
     const [nameError, setNameError] = useState('');
     const [categoryError, setCategoryError] = useState('');
 
@@ -21,12 +22,16 @@ function AdminPage() {
         event.preventDefault();
         if (validateForm()) {
             const inputData = {
-                food_id: '',
-                food_name: foodName,
-                food_main_category: foodCategory
+                id: foodId,
+                name: foodName,
+                mainCategory: foodCategory
             };
 
-            dispatch(saveFood(inputData));
+            saveFood(inputData).then(result => {
+                dispatch(result);
+            }).catch(err => {
+                throw err;
+            })
 
             resetErrors();
             resetForm();
@@ -38,6 +43,11 @@ function AdminPage() {
         resetErrors();
 
         let vaildated = true;
+
+        if(!foodId) {
+            setIdError('아이디를 입력해주세요.');
+            vaildated = false;
+        }
 
         if (!foodName) {
             setNameError('음식명을 입력해주세요.');
@@ -53,11 +63,13 @@ function AdminPage() {
     };
 
     const resetErrors = () => {
+        setIdError('');
         setNameError('');
         setCategoryError('');
     };
 
     const resetForm = () => {
+        setFoodId('');
         setFoodName('');
         setFoodCategory('');
     };
@@ -66,6 +78,18 @@ function AdminPage() {
         <div className="adminPage">
             <div>
                 <form onSubmit={addFood}>
+                    <div className="input_name">
+                        <h5>ID</h5>
+                        <input
+                            type="text"
+                            value={foodId}
+                            placeholder="아이디"
+                            onChange={e => setFoodId(e.target.value)}
+                        />
+                        <div className="error_state">
+                            {idError}
+                        </div>
+                    </div>
                     <div className="input_name">
                         <h5>음식 이름</h5>
                         <input
@@ -95,7 +119,7 @@ function AdminPage() {
                     </button>
                 </form>
             </div>
-            <Food/>
+            <ListRepetition/>
         </div>
     );
 };

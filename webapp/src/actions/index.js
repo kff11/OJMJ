@@ -10,6 +10,7 @@ export const getFood = () => {
         axios.get('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food')
             .then(res => {
                 if (res.data) {
+                    console.log(res.data)
                     resolve({
                         type: GET_FOOD,
                         data: res.data
@@ -22,16 +23,39 @@ export const getFood = () => {
 }
 
 //Action Create Function
-export const saveFood = (saveData) => ({
-    type: SAVE_FOOD,
-    saveData: {
-        food_id: saveData.food_id,
-        food_name: saveData.food_name,
-        food_main_category: saveData.food_main_category
-    }
-});
+export const saveFood = (saveData) => {
+    return new Promise((resolve, reject) => {
+        axios.post('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food',
+            {
+                id: saveData.id,
+                name: saveData.name,
+                mainCategory: saveData.mainCategory
+            })
+            .then(res => {
+                resolve({
+                    type: SAVE_FOOD,
+                    saveData: res.data
+                });
+            }).catch(err => {
+            console.log("Nope")
+            reject(err);
+        });
+    });
+}
 
-export const deleteFood = (foodId) => ({
-    type: DELETE_FOOD,
-    food_id: foodId
-});
+export const deleteFood = (foodId) => {
+    return new Promise((resolve, reject) => {
+        axios.delete('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food/'+ foodId)
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data)
+                    resolve({
+                        type: DELETE_FOOD,
+                        data: foodId
+                    });
+                }
+            }).catch(err => {
+            reject(err);
+        });
+    });
+}

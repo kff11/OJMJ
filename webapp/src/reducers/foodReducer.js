@@ -2,9 +2,11 @@ import {DELETE_FOOD, GET_FOOD, SAVE_FOOD} from '../actions/index';
 const initialState = {
     foods: [
         {
-            food_id: 1,
-            food_name: '음식명',
-            food_main_category: '카테고리'
+            id: 1,
+            name: '음식명',
+            mainCategory: '카테고리',
+            status: 'ABLE',
+            selectCount: 0
         }
     ]
 }
@@ -21,7 +23,6 @@ export default function foodReducer(state = initialState, action) {
             console.log(action);
             console.log(state);
             console.log("저장 끝");
-            console.log(state.foods.concat({...action.saveData}));
 
             return {
                 foods: state.foods.concat(action.saveData)
@@ -30,7 +31,7 @@ export default function foodReducer(state = initialState, action) {
             return {
                 ...state,
                 foods: state.foods.filter(row =>
-                    row.food_id !== action.food_id)
+                    row.id !== action.id)
             }
         default:
             return state
