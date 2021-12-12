@@ -1,6 +1,7 @@
 package com.klb.ojmj.controller;
 
 import com.klb.ojmj.model.Food;
+import com.klb.ojmj.model.FoodCategory;
 import com.klb.ojmj.service.FoodService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +19,17 @@ public class FoodController {
     }
 
     @GetMapping("")
-    public ResponseEntity getFoods(@RequestParam(required = false) String id) {
-        if (id == null) {
-            return ResponseEntity.ok(foodService.getAllFoods());
+    public ResponseEntity getFoods(@RequestParam(required = false) String id, @RequestParam(required = false) FoodCategory mainCategory) {
+        if (id != null) {
+            return ResponseEntity.ok(foodService.getFood(id));
+        } else if (mainCategory != null) {
+            return ResponseEntity.ok(foodService.getMainCategoryFoods(mainCategory));
         }
-        return ResponseEntity.ok(foodService.getFood(id));
+        return ResponseEntity.ok(foodService.getAllFoods());
     }
 
     @PostMapping("")
-    public ResponseEntity<Food> addFood(@RequestBody Food food) {
+    public ResponseEntity<Food> addFood(@RequestBody Food food) throws Exception {
         return ResponseEntity.ok(foodService.addFood(food));
     }
 
