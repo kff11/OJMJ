@@ -20,6 +20,7 @@ public class FoodController {
 
     @GetMapping("")
     public ResponseEntity getFoods(@RequestParam(required = false) String id, @RequestParam(required = false) FoodCategory mainCategory) {
+
         if (id != null) {
             return ResponseEntity.ok(foodService.getFood(id));
         } else if (mainCategory != null) {
@@ -29,7 +30,7 @@ public class FoodController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Food> addFood(@RequestBody Food food) throws Exception {
+    public ResponseEntity<Food> addFood(@RequestBody Food food) {
         return ResponseEntity.ok(foodService.addFood(food));
     }
 

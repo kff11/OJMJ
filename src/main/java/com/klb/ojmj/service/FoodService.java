@@ -56,11 +56,12 @@ public class FoodService {
         return result;
     }
 
-    public Food addFood(Food food) throws Exception {
-        System.out.println("########## addFood INPUT ###########");
+    public Food addFood(Food food) {
+        System.out.println("########## addFood INPUT S ###########");
         System.out.println(food);
+        System.out.println("########## addFood INPUT E ###########");
         if(food.getId().isEmpty() || food.getId() == null) {
-            throw new Exception("ID는 필수값입니다.");
+            throw new EntityNotFoundException("해당 ID로 등록된 음식이 없습니다.");
         }
         // 초기값 세팅
         food.setStatus(FoodStatus.DISABLED);
@@ -68,7 +69,11 @@ public class FoodService {
         return foodRepository.save(food);
     }
 
-    public void deleteBook(String id) {
+    public int deleteBook(String id) {
+        if(id.isEmpty() || id == null) {
+            throw new EntityNotFoundException("해당 ID로 등록된 음식이 없습니다.");
+        }
         foodRepository.deleteById(id);
+        return 1;
     }
 }

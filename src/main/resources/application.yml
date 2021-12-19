@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: OJMJ-rest-api-dev
+  profiles:
+    active: prod
+
+server:
+  port: 8080
+
+---
+
+spring:
+  application:
+    name: OJMJ-rest-api
+  profiles:
+    active: dev
+
+  #DATABASE
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${DB_PASSWORD}
+    url: ${DB_URL_DEV}
+    username: ${DB_USERNAME}
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  mvc:
+    servlet:
+      load-on-startup: 1
+
+server:
+  port: 8081
+
