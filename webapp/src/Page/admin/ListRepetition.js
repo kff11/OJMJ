@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import foodReducer from "../../reducers/foodReducer";
-import {deleteFood, getFood, saveFood} from "../../actions";
+import {deleteFood, getFood} from "../../actions";
 
 const ListRepetition = () => {
     const {foods} = useSelector(state => state.foodReducer);

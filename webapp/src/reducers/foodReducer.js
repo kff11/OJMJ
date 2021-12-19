@@ -14,16 +14,10 @@ const initialState = {
 export default function foodReducer(state = initialState, action) {
     switch (action.type) {
         case GET_FOOD:
-            console.log(action);
             return {
                 foods: action.data
             }
         case SAVE_FOOD:
-            console.log("저장");
-            console.log(action);
-            console.log(state);
-            console.log("저장 끝");
-
             return {
                 foods: state.foods.concat(action.saveData)
             }

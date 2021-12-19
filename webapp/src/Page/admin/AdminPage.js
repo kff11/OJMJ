@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import ListRepetition from './ListRepetition.js';
 import './AdminPage.css';
 import './ListStyle.css';
 
 import {useDispatch} from "react-redux";
-import {getFood, saveFood} from "../../actions";
+import {saveFood} from "../../actions";
 
 function AdminPage() {
     const [foodId, setFoodId] = useState('');

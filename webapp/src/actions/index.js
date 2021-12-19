@@ -10,7 +10,6 @@ export const getFood = () => {
         axios.get('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food')
             .then(res => {
                 if (res.data) {
-                    console.log(res.data)
                     resolve({
                         type: GET_FOOD,
                         data: res.data
