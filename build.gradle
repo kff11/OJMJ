@@ -14,10 +14,6 @@ configurations {
     }
 }
 
-bootJar {
-    mainClass = 'com.klb.ojmj.OjmjApplication'
-}
-
 repositories {
     mavenCentral()
 }
@@ -34,4 +30,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+bootJar {
+    mainClass = 'com.klb.ojmj.OjmjApplication'
+}
+
+bootRun {
+    String activeProfile = System.properties['spring.profiles.active']
+    systemProperty "spring.profiles.active", activeProfile
 }
