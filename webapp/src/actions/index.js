@@ -4,6 +4,7 @@ import axios from "axios";
 export const GET_FOOD = 'GET_FOOD';
 export const SAVE_FOOD = 'SAVE_FOOD';
 export const DELETE_FOOD = 'DELETE_FOOD';
+export const SELECT_FOOD = 'SELECT_FOOD';
 
 export const getFood = () => {
     return new Promise((resolve, reject) => {
@@ -13,6 +14,23 @@ export const getFood = () => {
                     resolve({
                         type: GET_FOOD,
                         data: res.data
+                    });
+                }
+            }).catch(err => {
+            reject(err);
+        });
+    });
+}
+
+export const hitFood = (foodId) => {
+    return new Promise((resolve, reject) => {
+        axios.get('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food/'+ foodId)
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data)
+                    resolve({
+                        type: SELECT_FOOD,
+                        data: foodId
                     });
                 }
             }).catch(err => {

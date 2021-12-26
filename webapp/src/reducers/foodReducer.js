@@ -1,4 +1,4 @@
-import {DELETE_FOOD, GET_FOOD, SAVE_FOOD} from '../actions/index';
+import {DELETE_FOOD, GET_FOOD, SAVE_FOOD, SELECT_FOOD} from '../actions/index';
 const initialState = {
     foods: [
         {
@@ -27,6 +27,8 @@ export default function foodReducer(state = initialState, action) {
                 foods: state.foods.filter(row =>
                     row.id !== action.id)
             }
+        case SELECT_FOOD:
+            return state
         default:
             return state
     }
