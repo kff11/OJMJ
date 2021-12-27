@@ -8,7 +8,6 @@ const MainPage = () => {
     const {foods} = useSelector(state => state.foodReducer);
     const [randomFood, setRandomFood] = useState({name: "시작을 눌러주세요."});
     const dispatch = useDispatch();
-    /*const hitFood = (selected.id == 1) ? {setText:"시작!"}:{setText: selected.name};*/
 
     //랜덤
     const onStartRandomFood = () => {

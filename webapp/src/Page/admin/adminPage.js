@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import ListRepetition from './ListRepetition.js';
-import './AdminPage.css';
-import './ListStyle.css';
+import ListRepetition from './listRepetition.js';
+import './adminPage.css';
+import './listStyle.css';
 
 import {useDispatch} from "react-redux";
 import {saveFood} from "../../actions";

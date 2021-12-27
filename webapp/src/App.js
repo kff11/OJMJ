@@ -1,8 +1,11 @@
 import React from 'react';
 import './App.css';
-import Header from "./common/component/Header";
+import Header from "./common/component/header";
 import MainPage from "./Page/main/mainPage";
-import adminPage from "./Page/admin/AdminPage";
+import AdminPage from "./Page/admin/adminPage";
+import Login from "./Page/login/loginPage";
+import SignUp from "./Page/sign_up/signUpPage";
+import UserProfile from "./Page/user_profile/userProfilePage";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
@@ -12,7 +15,10 @@ function App() {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={MainPage} />
-                    <Route exact path="/admin" component={adminPage} />
+                    <Route exact path="/admin" component={AdminPage} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/signup" component={SignUp}/>
+                    <Route exact path="/user/profile" component={UserProfile}/>
                 </Switch>
             </BrowserRouter>
         </div>
