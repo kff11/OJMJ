@@ -45,11 +45,10 @@ const MainPage = () => {
         <div className="main_contents">
             <h1>{randomFood.name}</h1>
             <div className="ojmj_button">
-                <button
+                {!isShow && <button
                     className="start_button"
                     onClick={onButtonShow}>시작!
-                </button>
-                {isShow ? "숨기기" : "보이기"}
+                </button>}
                 {isShow && <div className="switch_button">
                     <button
                         className="something_else_button"
