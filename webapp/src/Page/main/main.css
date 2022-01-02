@@ -2,4 +2,15 @@
     width: 100%;
     height: auto;
     padding: 100px;
+    font-family: 'KyoboHand', sans-serif;
+}
+
+.start_button, .something_else_button, .select_button {
+    margin: 10px;
+    padding: 10px;
+    width: 15%;
+    font-size: 20px;
+    background: #ffdc7a;
+    border: 0;
+    border-radius: 30px;
 }

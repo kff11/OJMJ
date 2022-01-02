@@ -5,8 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 const MainPage = () => {
+    const [isShow, setIsShow] = useState(false);
+
     const {foods} = useSelector(state => state.foodReducer);
-    const [randomFood, setRandomFood] = useState({name: "시작을 눌러주세요."});
+    const [randomFood, setRandomFood] = useState({name: "오늘 점심 뭐 먹지?"});
     const dispatch = useDispatch();
 
     //랜덤
@@ -15,8 +17,8 @@ const MainPage = () => {
         const result = foods[randomIdx];
         setRandomFood(result);
     }
-    const onSelectFood = () =>  {
-        if(!randomFood.id) {
+    const onSelectFood = () => {
+        if (!randomFood.id) {
             return;
         }
         hitFood(randomFood.id).then(result => {
@@ -24,6 +26,10 @@ const MainPage = () => {
         }).catch(err => {
             throw err;
         });
+    }
+
+    const onButtonShow = () => {
+        setIsShow(!isShow);
     }
 
     //데이터 조회
@@ -38,8 +44,23 @@ const MainPage = () => {
     return (
         <div className="main_contents">
             <h1>{randomFood.name}</h1>
-            <button onClick={onStartRandomFood}>start</button>
-            <button onClick={onSelectFood}>선택!</button>
+            <div className="ojmj_button">
+                <button
+                    className="start_button"
+                    onClick={onButtonShow}>시작!
+                </button>
+                {isShow ? "숨기기" : "보이기"}
+                {isShow && <div className="switch_button">
+                    <button
+                        className="something_else_button"
+                        onClick={onStartRandomFood}>다른거...
+                    </button>
+                    <button
+                        className="select_button"
+                        onClick={onSelectFood}>이거다!
+                    </button>
+                </div>}
+            </div>
         </div>
     );
 }

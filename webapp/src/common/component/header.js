@@ -5,8 +5,8 @@ import './header.css';
 
 const Header = () => {
     return (
-        <div>
-            <Navbar bg="light" expand="lg">
+        <div className="my_nav">
+            <Navbar expand="lg">
                 <Container>
                     <Navbar.Brand href="/">오점뭐먹</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
