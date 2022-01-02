@@ -30,6 +30,7 @@ const MainPage = () => {
 
     const onButtonShow = () => {
         setIsShow(!isShow);
+        onStartRandomFood();
     }
 
     //데이터 조회
