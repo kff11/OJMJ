@@ -1,8 +1,8 @@
 .main_contents {
+    text-align: center;
     width: 100%;
     height: auto;
     padding: 100px;
-    font-family: 'KyoboHand', sans-serif;
 }
 
 .start_button, .something_else_button, .select_button {

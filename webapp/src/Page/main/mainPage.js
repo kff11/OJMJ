@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import './main.css';
 import {hitFood, getFood} from "../../actions";
 import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 
 const MainPage = () => {
@@ -28,6 +29,7 @@ const MainPage = () => {
         });
     }
 
+    //버튼 변경
     const onButtonShow = () => {
         setIsShow(!isShow);
         onStartRandomFood();
@@ -55,10 +57,12 @@ const MainPage = () => {
                         className="something_else_button"
                         onClick={onStartRandomFood}>다른거...
                     </button>
-                    <button
-                        className="select_button"
-                        onClick={onSelectFood}>이거다!
-                    </button>
+                    <Link to="/resaurantlist">
+                        <button
+                            className="select_button"
+                            onClick={onSelectFood}>이거다!
+                        </button>
+                    </Link>
                 </div>}
             </div>
         </div>

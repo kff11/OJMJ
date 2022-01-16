@@ -1,0 +1,30 @@
+.restaurant_content {
+    display: inline-block;
+    margin: 50px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.restaurant_list {
+
+}
+
+ul.restaurant_list_item, ol.restaurant_list_item {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+    width: 100%;
+    text-align: left;
+
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0px #cecece;
+}
+
+ul.restaurant_list_item li, ol.restaurant_list_item li {
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #efefef;
+    font-size: 12px;
+}

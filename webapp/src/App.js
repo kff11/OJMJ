@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from "./common/component/header";
 import MainPage from "./Page/main/mainPage";
+import ResturantListPage from "./Page/restaurant_list/restaurantListPage";
 import AdminPage from "./Page/admin/adminPage";
 import Login from "./Page/login/loginPage";
 import SignUp from "./Page/sign_up/signUpPage";
@@ -19,6 +20,7 @@ function App() {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={SignUp}/>
                     <Route exact path="/user/profile" component={UserProfile}/>
+                    <Route exact path="/resaurantlist" component={ResturantListPage}/>
                 </Switch>
             </BrowserRouter>
         </div>
