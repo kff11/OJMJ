@@ -1,0 +1,13 @@
+.restaurant_image{
+    width: 150px;
+    height: 150px;
+    background-color: #777;
+    line-height: 20px;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 150px;
+}
+
+ul.restaurant_explain {
+    list-style: none;
+}

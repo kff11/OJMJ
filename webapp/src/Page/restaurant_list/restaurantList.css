@@ -6,10 +6,6 @@
     text-align: center;
 }
 
-.restaurant_list {
-
-}
-
 ul.restaurant_list_item, ol.restaurant_list_item {
     list-style: none;
     margin: 0px;
