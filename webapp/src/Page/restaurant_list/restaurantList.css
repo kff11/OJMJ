@@ -1,21 +1,26 @@
 .restaurant_content {
-    display: inline-block;
-    margin: 50px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
     text-align: center;
+}
+.restaurant_list{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 ul.restaurant_list_item, ol.restaurant_list_item {
-    list-style: none;
     margin: 0px;
     padding: 0px;
-
-    width: 100%;
+    width: 90vw;
+    height: 100%;
     text-align: left;
-
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px 0px #cecece;
+    list-style: none;
+    border-radius: 10px;
+    box-shadow: 5px 10px 10px 0px #cecece;
 }
 
 ul.restaurant_list_item li, ol.restaurant_list_item li {
