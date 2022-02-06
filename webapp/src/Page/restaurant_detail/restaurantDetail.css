@@ -1,13 +1,40 @@
+.restaurant_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
 .restaurant_image{
+    display: inline-block;
     width: 150px;
     height: 150px;
+    padding: 10px;
     background-color: #777;
     line-height: 20px;
-    color: #ffffff;
-    padding: 10px;
     border-radius: 150px;
 }
 
-ul.restaurant_explain {
+.restaurant_explain{
+    box-shadow: 5px 5px 10px 0px #cecece;
+}
+
+.restaurant_detail_explain{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 90vw;
+    border-bottom: 3px #444444;
+}
+
+div.restaurant_breakdown{
+    display: flex;
+    flex-direction: row;
+}
+
+ul.restaurant_breakdown {
     list-style: none;
 }
