@@ -1,8 +1,17 @@
-.main_contents {
-    text-align: center;
+.main_contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    height: auto;
-    padding: 100px;
+    height: 90vh;
+    text-align: center;
+}
+
+.food__name{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    height: 650px;
 }
 
 .start_button, .something_else_button, .select_button {

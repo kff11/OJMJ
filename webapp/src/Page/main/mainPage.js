@@ -3,6 +3,7 @@ import './main.css';
 import {hitFood, getFood} from "../../actions";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import Header from "../../common/component/header";
 
 
 const MainPage = () => {
@@ -45,25 +46,30 @@ const MainPage = () => {
     }, [])
 
     return (
-        <div className="main_contents">
-            <h1>{randomFood.name}</h1>
-            <div className="ojmj_button">
-                {!isShow && <button
-                    className="start_button"
-                    onClick={onButtonShow}>시작!
-                </button>}
-                {isShow && <div className="switch_button">
-                    <button
-                        className="something_else_button"
-                        onClick={onStartRandomFood}>다른거...
-                    </button>
-                    <Link to="/resaurantlist">
+        <div className={"main_page_body"}>
+            <Header/>
+            <div className="main_contents">
+                <div className={"food__name"}>
+                    <h1>{randomFood.name}</h1>
+                </div>
+                <div className="ojmj_button">
+                    {!isShow && <button
+                        className="start_button"
+                        onClick={onButtonShow}>시작!
+                    </button>}
+                    {isShow && <div className="switch_button">
                         <button
-                            className="select_button"
-                            onClick={onSelectFood}>이거다!
+                            className="something_else_button"
+                            onClick={onStartRandomFood}>다른거...
                         </button>
-                    </Link>
-                </div>}
+                        <Link to="/resaurantlist">
+                            <button
+                                className="select_button"
+                                onClick={onSelectFood}>이거다!
+                            </button>
+                        </Link>
+                    </div>}
+                </div>
             </div>
         </div>
     );

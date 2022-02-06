@@ -75,7 +75,7 @@ function AdminPage() {
     };
 
     return (
-        <div className="adminPage">
+        <div className="admin_page_body">
             <div>
                 <form onSubmit={addFood}>
                     <div className="input_name">
