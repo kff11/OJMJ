@@ -19,6 +19,8 @@ const MainPage = () => {
         const result = foods[randomIdx];
         setRandomFood(result);
     }
+
+    //선택
     const onSelectFood = () => {
         if (!randomFood.id) {
             return;
@@ -29,6 +31,8 @@ const MainPage = () => {
             throw err;
         });
     }
+
+    //hitFood로 선택 된 아이디값을 판단하여 result 값을 전달.
 
     //버튼 변경
     const onButtonShow = () => {
@@ -65,7 +69,8 @@ const MainPage = () => {
                         <Link to="/resaurantlist">
                             <button
                                 className="select_button"
-                                onClick={onSelectFood}>이거다!
+                                onClick={onSelectFood}
+                            >이거다!
                             </button>
                         </Link>
                     </div>}

@@ -1,14 +1,31 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./restaurantList.css";
+import {getFood} from "../../actions";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import Header from "../../common/component/header";
 
-const restaurantListPage = () => {
+const RestaurantListPage = () => {
+    const dispatch = useDispatch();
+    const {foods} = useSelector(state => state.foodReducer);
+
+    //데이터 조회
+    useEffect(() => {
+        getFood().then(res => {
+            dispatch(res);
+        }).catch(err => {
+            throw err;
+        })
+    }, [])
+
     return (
         <div className={"restaurant_list_page_body"}>
             <Header/>
             <div className="restaurant_content">
-                <h1>선택한 음식명</h1>
+                {/*이전 페이지에서 name 값을 어떻게 전달받을까?*/}
+                {foods.map(nameData => {
+                    <h1 key={nameData.id}>{nameData.name}</h1>
+                })}
                 <div className="restaurant_list">
                     <ul className="restaurant_list_item">
                         <Link to="/resaurantdetail">
@@ -35,4 +52,4 @@ const restaurantListPage = () => {
     );
 }
 
-export default restaurantListPage;
+export default RestaurantListPage;
