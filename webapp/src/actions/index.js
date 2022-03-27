@@ -24,7 +24,9 @@ export const getFood = () => {
 
 export const hitFood = (foodId) => {
     return new Promise((resolve, reject) => {
-        axios.get('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food/'+ foodId)
+        //query 형식
+        //axios.get('url' + foodid) 실제로는 http://naver.com/id?id=foodid 이런식
+        axios.get('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food/' + foodId)
             .then(res => {
                 if (res.data) {
                     console.log(res.data)
@@ -42,6 +44,8 @@ export const hitFood = (foodId) => {
 //Action Create Function
 export const saveFood = (saveData) => {
     return new Promise((resolve, reject) => {
+        //parameter 형식
+        //axios.post('url', {데이터])
         axios.post('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food',
             {
                 id: saveData.id,

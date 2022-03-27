@@ -7,25 +7,17 @@ import Header from "../../common/component/header";
 
 const RestaurantListPage = () => {
     const dispatch = useDispatch();
-    const {foods} = useSelector(state => state.foodReducer);
+    const {selectFood} = useSelector(state => state.foodReducer);
 
-    //데이터 조회
-    useEffect(() => {
-        getFood().then(res => {
-            dispatch(res);
-        }).catch(err => {
-            throw err;
-        })
-    }, [])
+    //mainPage에서 선택을 하면 hitFood로 인해 adminPage의 선택 숫자가 변경 됨.
+    //위의 내용을 잘 생각해서 해당 페이지에 잘 전달해주면 될 것 같음.ㄴ
 
     return (
         <div className={"restaurant_list_page_body"}>
             <Header/>
             <div className="restaurant_content">
                 {/*이전 페이지에서 name 값을 어떻게 전달받을까?*/}
-                {foods.map(nameData => {
-                    <h1 key={nameData.id}>{nameData.name}</h1>
-                })}
+                <h1 key={selectFood.id}>{selectFood.name}</h1>
                 <div className="restaurant_list">
                     <ul className="restaurant_list_item">
                         <Link to="/resaurantdetail">

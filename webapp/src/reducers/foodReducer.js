@@ -8,14 +8,16 @@ const initialState = {
             status: 'ABLE',
             selectCount: 0
         }
-    ]
+    ],
+    selectFood: []
 }
 
 export default function foodReducer(state = initialState, action) {
     switch (action.type) {
         case GET_FOOD:
             return {
-                foods: action.data
+                foods: action.data,
+                selectFood: action.data
             }
         case SAVE_FOOD:
             return {
