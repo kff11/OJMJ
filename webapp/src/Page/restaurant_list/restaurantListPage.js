@@ -1,23 +1,18 @@
-import React, {useEffect} from "react";
+import React from "react";
 import "./restaurantList.css";
-import {getFood} from "../../actions";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import Header from "../../common/component/header";
 
 const RestaurantListPage = () => {
-    const dispatch = useDispatch();
-    const {selectFood} = useSelector(state => state.foodReducer);
-
-    //mainPage에서 선택을 하면 hitFood로 인해 adminPage의 선택 숫자가 변경 됨.
-    //위의 내용을 잘 생각해서 해당 페이지에 잘 전달해주면 될 것 같음.ㄴ
+    const {selectFoodItem} = useSelector(state => state.foodReducer);
 
     return (
         <div className={"restaurant_list_page_body"}>
             <Header/>
             <div className="restaurant_content">
                 {/*이전 페이지에서 name 값을 어떻게 전달받을까?*/}
-                <h1 key={selectFood.id}>{selectFood.name}</h1>
+                <h1 key={selectFoodItem.id}>{selectFoodItem[0].name}</h1>
                 <div className="restaurant_list">
                     <ul className="restaurant_list_item">
                         <Link to="/resaurantdetail">

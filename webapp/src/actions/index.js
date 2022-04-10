@@ -2,6 +2,7 @@
 import axios from "axios";
 
 export const GET_FOOD = 'GET_FOOD';
+export const HIt_FOOD = 'HIt_FOOD';
 export const SAVE_FOOD = 'SAVE_FOOD';
 export const DELETE_FOOD = 'DELETE_FOOD';
 export const SELECT_FOOD = 'SELECT_FOOD';
@@ -31,7 +32,7 @@ export const hitFood = (foodId) => {
                 if (res.data) {
                     console.log(res.data)
                     resolve({
-                        type: SELECT_FOOD,
+                        type: HIt_FOOD,
                         data: foodId
                     });
                 }
@@ -80,3 +81,9 @@ export const deleteFood = (foodId) => {
         });
     });
 }
+
+export const selectFood = (foodId, name) => ({
+    type: SELECT_FOOD,
+    id: foodId,
+    name: name
+})

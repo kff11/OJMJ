@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './main.css';
-import {hitFood, getFood} from "../../actions";
+import {hitFood, getFood, selectFood} from "../../actions";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import Header from "../../common/component/header";
@@ -21,15 +21,19 @@ const MainPage = () => {
     }
 
     //선택
-    const onSelectFood = () => {
+    const onHitFood = () => {
         if (!randomFood.id) {
             return;
         }
         hitFood(randomFood.id).then(result => {
+            console.log("아래는 메인Page hitFood 결과.")
+            console.log(result)
             dispatch(result);
         }).catch(err => {
             throw err;
         });
+
+        dispatch(selectFood(randomFood.id))
     }
 
     //hitFood로 선택 된 아이디값을 판단하여 result 값을 전달.
@@ -69,7 +73,7 @@ const MainPage = () => {
                         <Link to="/resaurantlist">
                             <button
                                 className="select_button"
-                                onClick={onSelectFood}
+                                onClick={onHitFood}
                             >이거다!
                             </button>
                         </Link>
