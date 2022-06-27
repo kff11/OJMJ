@@ -8,6 +8,7 @@ import AdminPage from "./Page/admin/adminPage";
 import Login from "./Page/login/loginPage";
 import SignUp from "./Page/sign_up/signUpPage";
 import UserProfile from "./Page/user_profile/userProfilePage";
+import UsersManage from "./Page/admin/usersManage";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                     <Route exact path="/user/profile" component={UserProfile}/>
                     <Route exact path="/resaurantlist" component={RestaurantListPage}/>
                     <Route exact path="/resaurantdetail" component={RestaurantDetailPage}/>
+                    <Route exact path="/usersmanage" component={UsersManage}/>
                 </Switch>
             </BrowserRouter>
         </div>

@@ -3,6 +3,17 @@
     padding: 10px;
 }
 
+div.sidebar {
+    display: flex;
+    width: 19%;
+    float: left;
+}
+
+div.food_table {
+    width: 79%;
+    float: right;
+}
+
 form {
     margin: 10px;
     padding: 20px;

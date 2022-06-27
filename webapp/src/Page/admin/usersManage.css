@@ -1,0 +1,15 @@
+.usermanage_body {
+    text-align: center;
+    padding: 10px;
+}
+
+div.sidebar {
+    display: flex;
+    width: 19%;
+    float: left;
+}
+
+div.user_table {
+    width: 79%;
+    float: right;
+}

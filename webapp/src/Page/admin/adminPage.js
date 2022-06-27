@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ListRepetition from './listRepetition.js';
 import './adminPage.css';
 import './listStyle.css';
-
+import AdminSidebar from './adminComponent/adminSidebar';
 import {useDispatch} from "react-redux";
 import {saveFood} from "../../actions";
 
@@ -35,16 +35,18 @@ function AdminPage() {
 
             resetErrors();
             resetForm();
-        };
+        }
+        ;
     }
 
 
+    // 필수 입력란 검사
     const validateForm = () => {
         resetErrors();
 
         let vaildated = true;
 
-        if(!foodId) {
+        if (!foodId) {
             setIdError('아이디를 입력해주세요.');
             vaildated = false;
         }
@@ -62,12 +64,14 @@ function AdminPage() {
         return vaildated;
     };
 
+    // 에러 메시지 초기화
     const resetErrors = () => {
         setIdError('');
         setNameError('');
         setCategoryError('');
     };
 
+    // 입력란 초기화
     const resetForm = () => {
         setFoodId('');
         setFoodName('');
@@ -76,7 +80,10 @@ function AdminPage() {
 
     return (
         <div className="admin_page_body">
-            <div>
+            <div className={"sidebar"}>
+                <AdminSidebar/>
+            </div>
+            <div className="food_table">
                 <form onSubmit={addFood}>
                     <div className="input_name">
                         <h5>ID</h5>
@@ -118,8 +125,8 @@ function AdminPage() {
                         추가
                     </button>
                 </form>
+                <ListRepetition/>
             </div>
-            <ListRepetition/>
         </div>
     );
 };
