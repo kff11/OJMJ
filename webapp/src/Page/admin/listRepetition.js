@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {deleteFood, getFood} from "../../actions";
-import Pagination from "./adminComponent/Pagination";
+import Pagination from "./adminComponent/pagination";
 
 const ListRepetition = () => {
     const [limit, setLimit] = useState(10); //페이지당 게시물 수
