@@ -4,6 +4,7 @@ import {hitFood, getFood, selectFood} from "../../actions";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import Header from "../../common/component/header";
+import Modal from "../../common/component/modal";
 
 
 const MainPage = () => {

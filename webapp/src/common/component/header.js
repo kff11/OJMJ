@@ -1,9 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import {Container,Navbar, Nav} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './header.css';
+import {useDispatch} from "react-redux";
+import Modal from "./modal";
+import {Link} from "react-router-dom";
 
 const Header = () => {
+    //Modal (open일때 true로 만들어 열리는 방식)
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
     return (
         <div className="my_nav">
             <Navbar expand="lg">
@@ -14,11 +28,23 @@ const Header = () => {
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/admin">AdminPage</Nav.Link>
-                            <Nav.Link href="/login">Login</Nav.Link>
+                            <Nav><button onClick={openModal}>Login</button></Nav>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            <div>
+                <Modal
+                    open={modalOpen}
+                    close={closeModal}
+                    header={"로그인"}>
+                    <input placeholder="ID"></input>
+                    <input placeholder="PW"></input>
+                    <Link to="/"><button>login</button></Link>
+                    <Link to="/signUp"><button>회원가입</button></Link>
+                </Modal>
+            </div>
         </div>
     );
 }
