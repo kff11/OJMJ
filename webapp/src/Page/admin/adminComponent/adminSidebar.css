@@ -6,7 +6,7 @@
     width: 100%;
     min-width: 180px;
     height: 98vh;
-    border: 2px solid #9f8189;
+    border: 2px solid #b0989f;
     border-radius: 20px;
 }
 
@@ -25,7 +25,7 @@
     width: 100%;
     align-items: center;
     text-decoration-line: none;
-    color: #9f8189;
+    color: #a4989b;
 }
 
 .a_style:hover {

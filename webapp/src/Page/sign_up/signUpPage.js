@@ -1,9 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Header from "../../common/component/header";
 
 function signUpPage () {
     return (
         <div>
+            <Header/>
             <h1>회원가입</h1>
             <input placeholder="닉네임"/>
             <input placeholder="ID"/>

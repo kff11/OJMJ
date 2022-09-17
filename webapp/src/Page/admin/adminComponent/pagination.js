@@ -6,23 +6,23 @@ function Pagination({total, limit, page, setPage}) {
     return (
         <>
             <Nav>
-                <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+                <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
                     &lt;
-                </button>
+                </Button>
                 {Array(numPages)
                     .fill()
                     .map((_, i) => (
-                        <button
+                        <Button
                             key={i + 1}
                             onClick={() => setPage(i +1)}
                             aria-current={page === i + 1 ? "page" : null}
                         >
                             {i + 1}
-                        </button>
+                        </Button>
                     ))}
-                <button onClick={() => setPage(page + 1)} disabled={page === numPages}>
+                <Button onClick={() => setPage(page + 1)} disabled={page === numPages}>
                     &gt;
-                </button>
+                </Button>
             </Nav>
         </>
     )
@@ -36,29 +36,31 @@ const Nav = styled.nav`
   margin: 16px;
 `;
 
-const button = styled.button`
+const Button = styled.button`
   border: none;
   border-radius: 8px;
   padding: 8px;
   margin: 0;
-  background: black;
+  background: #9f8189;
   color: white;
   font-size: 1rem;
 
   &:hover {
-    background: tomato;
+    background: deeppink;
     cursor: pointer;
     transform: translateY(-2px);
   }
 
   &[disabled] {
-    background: grey;
+    background: white;
+    color: #9f8189;
+    border: 1px solid #9f8189;
     cursor: revert;
     transform: revert;
   }
 
   &[aria-current] {
-    background: deeppink;
+    background: #ffdc7a;
     font-weight: bold;
     cursor: revert;
     transform: revert;

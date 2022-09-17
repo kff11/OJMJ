@@ -1,10 +1,18 @@
+/*Table*/
 .food {
     width: 100%;
     border: 1px solid #444444;
     border-collapse: collapse;
+    text-align: center;
 }
 
 th, td {
     border: 1px solid #444444;
     padding: 10px;
+}
+
+.food_delete_btn {
+    border: none;
+    border-radius: 10px;
+    background: #ffdc7a;
 }

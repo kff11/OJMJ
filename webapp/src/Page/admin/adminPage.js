@@ -91,7 +91,7 @@ function AdminPage() {
     };
 
     return (
-        <div className="                                      ">
+        <div className="admin_page_body">
             <div className={"sidebar"}>
                 <AdminSidebar/>
             </div>
@@ -101,7 +101,7 @@ function AdminPage() {
                     open={modalOpen}
                     close={closeModal}
                     header={"메뉴 추가"}>
-                    <form onSubmit={addFood}>
+                    <form className={"form_addfood"} onSubmit={addFood}>
                         <div className="input_name">
                             <h5>ID</h5>
                             <input

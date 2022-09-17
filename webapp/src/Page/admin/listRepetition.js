@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {deleteFood, getFood} from "../../actions";
 import Pagination from "./adminComponent/pagination";
+import '../admin/listStyle.css';
 
 const ListRepetition = () => {
     const [limit, setLimit] = useState(10); //페이지당 게시물 수
@@ -65,7 +66,7 @@ const ListRepetition = () => {
                                 <td>{rowData.status}</td>
                                 <td>{rowData.selectCount}</td>
                                 <td>
-                                    <button onClick={() => onDelete(rowData.id)}>
+                                    <button onClick={() => onDelete(rowData.id)} className={"food_delete_btn"}>
                                         삭제
                                     </button>
                                 </td>
