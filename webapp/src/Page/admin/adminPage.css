@@ -1,17 +1,25 @@
-.admin_page_body{
+.inner{
+    max-width: 1900px;
     text-align: center;
     padding: 10px;
+    position: relative;
 }
 
 div.sidebar {
     display: flex;
     width: 19%;
     float: left;
+    top: 10px;
+    left: 10px;
+    position: absolute;
 }
 
 div.food_table {
     width: 79%;
     float: right;
+    top: 10px;
+    right: 4px;
+    position: absolute;
 }
 
 form.form_addfood {

@@ -37,7 +37,7 @@ const Nav = styled.nav`
 `;
 
 const Button = styled.button`
-  border: none;
+  border: 2px solid #9f8189;
   border-radius: 8px;
   padding: 8px;
   margin: 0;
@@ -47,6 +47,7 @@ const Button = styled.button`
 
   &:hover {
     background: deeppink;
+    border: 2px solid deeppink;
     cursor: pointer;
     transform: translateY(-2px);
   }
@@ -54,13 +55,14 @@ const Button = styled.button`
   &[disabled] {
     background: white;
     color: #9f8189;
-    border: 1px solid #9f8189;
+    border: 2px solid #9f8189;
     cursor: revert;
     transform: revert;
   }
 
   &[aria-current] {
     background: #ffdc7a;
+  border: 2px solid #ffdc7a;
     font-weight: bold;
     cursor: revert;
     transform: revert;
