@@ -98,7 +98,7 @@ function AdminPage() {
                     <AdminSidebar/>
                 </div>
                 <div className="food_table">
-                    <button onClick={openModal}>메뉴 추가</button>
+                    <button className={"menu_add_btn"} onClick={openModal}>메뉴 추가</button>
                     <Modal
                         open={modalOpen}
                         close={closeModal}

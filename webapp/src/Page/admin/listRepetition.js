@@ -30,7 +30,7 @@ const ListRepetition = () => {
     return (
         <div>
             <div>
-                <label>
+                <label className={"select_the_num"}>
                     페이지 당 표시할 게시물 수:&nbsp;
                     <select
                         type="number"
