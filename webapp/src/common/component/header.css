@@ -1,3 +1,40 @@
 .my_nav {
     background: #9f8189 !important;
 }
+.login_modal {
+    text-align: center;
+    position: relative;
+}
+/*INPUT*/
+.login_input {
+    width: 300px;
+    height: 40px;
+    padding: 10px 20px 10px 20px;
+    margin: 5px;
+    border: 2px solid #b7b7b7;
+    border-radius: 10px;
+}
+.login_input:focus {
+    outline: none;
+    border: 2px solid #ffdc7a;
+    border-radius: 10px;
+}
+
+/*LINK*/
+.login_link_div > a {
+    display: inline-block;
+    margin: 5px;
+    text-decoration-line: none;
+}
+.login_link_div .login_link{
+    width: 300px;
+    height: 40px;
+    padding: 10px 20px 10px 20px;
+    color: #000;
+    background: #ffdc7a;
+    border-radius: 10px;
+}
+.login_link_div .signup_link {
+    background: none;
+    color: #9f8189;
+}

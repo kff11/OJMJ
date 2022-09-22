@@ -62,10 +62,13 @@ const MainPage = () => {
                     <h1>{randomFood.name}</h1>
                 </div>
                 <div className="ojmj_button">
+
                     {!isShow && <button
                         className="start_button"
                         onClick={onButtonShow}>시작!
                     </button>}
+
+                    {/* 시작 선택 후 버튼 변경 내용*/}
                     {isShow && <div className="switch_button">
                         <button
                             className="something_else_button"
@@ -74,8 +77,7 @@ const MainPage = () => {
                         <Link to="/resaurantlist">
                             <button
                                 className="select_button"
-                                onClick={onHitFood}
-                            >이거다!
+                                onClick={onHitFood}>이거다!
                             </button>
                         </Link>
                     </div>}

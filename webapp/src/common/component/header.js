@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Container,Navbar, Nav} from "react-bootstrap";
+import {Container, Navbar, Nav} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './header.css';
 import {useDispatch} from "react-redux";
@@ -28,7 +28,7 @@ const Header = () => {
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/admin">AdminPage</Nav.Link>
-                            <Nav><button onClick={openModal}>Login</button></Nav>
+                            <Nav.Link onClick={openModal}>Login</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -38,11 +38,18 @@ const Header = () => {
                 <Modal
                     open={modalOpen}
                     close={closeModal}
-                    header={"로그인"}>
-                    <input placeholder="ID"></input>
-                    <input placeholder="PW"></input>
-                    <Link to="/"><button>login</button></Link>
-                    <Link to="/signUp"><button>회원가입</button></Link>
+                    header={"Login"}>
+                    <div className={"login_modal"}>
+                        <div className={"login_input_div"}>
+                            <input className={"login_input"} placeholder="ID"></input>
+                            <input className={"login_input"} placeholder="PW"></input>
+                        </div>
+                        <div className={"login_link_div"}>
+                            <a className={"login_link"} href="/">로그인</a>
+                            <hr/>
+                            <a className={"signup_link"} href="/signUp">회원가입</a>
+                        </div>
+                    </div>
                 </Modal>
             </div>
         </div>

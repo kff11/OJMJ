@@ -17,7 +17,7 @@
     width: 90%;
     max-width: 450px;
     margin: 0 auto;
-    border-radius: 0.3rem;
+    border-radius: 20px;
     background-color: #fff;
     /* 팝업이 열릴때 스르륵 열리는 효과 */
     animation: modal-show 0.3s;
@@ -42,7 +42,7 @@
 }
 .modal > section > main {
     padding: 16px;
-    /*border-bottom: 1px solid #dee2e6;*/
+    border-bottom: 1px solid #dee2e6;
     border-top: 1px solid #dee2e6;
 }
 .modal > section > footer {

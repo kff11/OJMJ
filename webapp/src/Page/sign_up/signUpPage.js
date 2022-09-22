@@ -1,14 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import Header from "../../common/component/header";
 import '../sign_up/signUpPage.css'
 
 function signUpPage() {
     return (
-        <div>
-            <Header/>
-            <div className={"inner signup_body"}>
-                <h1>회원가입</h1>
+        <div className={"signup_body"}>
+            <div className={"signup_inner"}>
+                <a href="/"><h1>오점뭐먹</h1></a><br/>
                 <input
                     className={"signup_input"}
                     placeholder="닉네임"
