@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
+import '../admin/listStyle.css';
+import Pagination from "./adminComponent/pagination";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteFood, getFood} from "../../actions";
-import Pagination from "./adminComponent/pagination";
-import '../admin/listStyle.css';
 
 const ListRepetition = () => {
     const [limit, setLimit] = useState(10); //페이지당 게시물 수
@@ -29,62 +29,60 @@ const ListRepetition = () => {
 
     return (
         <div>
-            <div>
-                <label className={"select_the_num"}>
-                    페이지 당 표시할 게시물 수:&nbsp;
-                    <select
-                        type="number"
-                        value={limit}
-                        onChange={({target: {value}}) => setLimit(Number(value))}
-                    >
-                        <option value="10">10</option>
-                        <option value="12">12</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                </label>
+            <label className={"select_the_num"}>
+                페이지 당 표시할 게시물 수:&nbsp;
+                <select
+                    type="number"
+                    value={limit}
+                    onChange={({target: {value}}) => setLimit(Number(value))}
+                >
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </label>
 
-                <main>
-                    <table className="food">
-                        <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>이름</th>
-                            <th>분류</th>
-                            <th>활성화<br/>상태</th>
-                            <th>선택<br/>횟수</th>
-                            <th>삭제</th>
+            <main>
+                <table className="food">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>이름</th>
+                        <th>분류</th>
+                        <th>활성화<br/>상태</th>
+                        <th>선택<br/>횟수</th>
+                        <th>삭제</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foods.slice(offset, offset + limit).map(rowData => (
+                        <tr key={rowData.id}>
+                            <td>{rowData.id}</td>
+                            <td>{rowData.name}</td>
+                            <td>{rowData.mainCategory}</td>
+                            <td>{rowData.status}</td>
+                            <td>{rowData.selectCount}</td>
+                            <td>
+                                <button onClick={() => onDelete(rowData.id)} className={"food_delete_btn"}>
+                                    삭제
+                                </button>
+                            </td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        {foods.slice(offset, offset + limit).map(rowData => (
-                            <tr key={rowData.id}>
-                                <td>{rowData.id}</td>
-                                <td>{rowData.name}</td>
-                                <td>{rowData.mainCategory}</td>
-                                <td>{rowData.status}</td>
-                                <td>{rowData.selectCount}</td>
-                                <td>
-                                    <button onClick={() => onDelete(rowData.id)} className={"food_delete_btn"}>
-                                        삭제
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
-                </main>
+                    ))}
+                    </tbody>
+                </table>
+            </main>
 
-                <footer>
-                    <Pagination
-                        total={foods.length}
-                        limit={limit}
-                        page={page}
-                        setPage={setPage}
-                    />
-                </footer>
-            </div>
+            <footer>
+                <Pagination
+                    total={foods.length}
+                    limit={limit}
+                    page={page}
+                    setPage={setPage}
+                />
+            </footer>
         </div>
     )
 };

@@ -1,4 +1,6 @@
 import { GET_FOOD, HIt_FOOD, SAVE_FOOD, DELETE_FOOD, SELECT_FOOD } from '../actions/index';
+
+// 초기값
 const initialState = {
     foods: [
         {
@@ -13,10 +15,10 @@ const initialState = {
 }
 
 export default function foodReducer(state = initialState, action) {
-    console.log("아래는 action.data")
+    /*console.log("아래는 action.data")
     console.log(action.data)
     console.log("아래는 state")
-    console.log(state)
+    console.log(state)*/
     switch (action.type) {
         case GET_FOOD:
             return {

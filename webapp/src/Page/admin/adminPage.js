@@ -1,12 +1,11 @@
 import React, {useState} from "react";
-import ListRepetition from './listRepetition.js';
 import './adminPage.css';
 import './listStyle.css';
+import ListRepetition from './listRepetition.js';
 import AdminSidebar from './adminComponent/adminSidebar';
 import Modal from '../../common/component/modal';
 import {useDispatch} from "react-redux";
 import {saveFood} from "../../actions";
-import {use} from "express/lib/router";
 
 function AdminPage() {
     const [foodId, setFoodId] = useState('');
@@ -33,6 +32,8 @@ function AdminPage() {
 
     const addFood = (event) => {
         event.preventDefault();
+
+
         if (validateForm()) {
             const inputData = {
                 id: foodId,
