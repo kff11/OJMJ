@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './usersManage.css';
 import AdminSidebar from './adminComponent/adminSidebar';
 import Pagination from "./adminComponent/pagination";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteUser} from "../../actions/userAction";
+import {deleteUser, getUser} from "../../actions/userAction";
 
 const UsersManage = () => {
     const [limit, setLimit] = useState(10); //페이지당 게시물 수
@@ -14,9 +14,7 @@ const UsersManage = () => {
 
     const dispatch = useDispatch();
 
-    const onDeleteUser = (userId) => {
-        dispatch(deleteUser(userId));
-    }
+    const onDeleteUser = (userId) => dispatch(deleteUser(userId));
 
     return (
         <div className={"usermanage_body"}>

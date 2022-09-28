@@ -16,12 +16,13 @@ function SignUpPage() {
         event.preventDefault();
 
         const admitData = {
+            no: '',
             userId: userId,
             nickname: nickName,
             password: password
         };
         console.log("admitData 전송");
-        console.log(admitData);
+        console.log(admitData.length);
 
         dispatch(saveUser(admitData));
 
@@ -38,7 +39,7 @@ function SignUpPage() {
 
     return (
         <div className={"signup_body"}>
-            <div className={"signup_inner"} onSubmit={addUser}>
+            <div className={"signup_inner"}>
                 <a href="/"><h1>오점뭐먹</h1></a><br/>
                 <input
                     type={"text"}
@@ -70,7 +71,7 @@ function SignUpPage() {
                     maxLength={18}
                 /><br/>
                 <Link to="/usersmanage">
-                    <button className={"signup_btn"}>회원가입</button>
+                    <button onClick={addUser} className={"signup_btn"}>회원가입</button>
                 </Link>
             </div>
         </div>

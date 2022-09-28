@@ -21,12 +21,13 @@ export default function userReducer(state = userInitialState, action) {
     switch (action.type) {
         case GET_USER:
             return {
+                lastId: state.lastId,
                 users: action.data
             }
 
         case SAVE_USER:
             return {
-                users: state.inputData.concat({
+                users: state.users.concat({
                     ...action.inputData,
                     no: state.lastId + 1,
                 })
@@ -36,7 +37,8 @@ export default function userReducer(state = userInitialState, action) {
             return {
                 ...state,
                 users: state.users.filter(row =>
-                    row.userId !== action.userId)
+                    row.userId !== action.userId),
+                lastId: state.lastId -1
             }
 
         default:

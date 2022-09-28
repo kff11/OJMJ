@@ -8,6 +8,8 @@ import {useDispatch} from "react-redux";
 import {saveFood} from "../../actions";
 
 function AdminPage() {
+    const dispatch = useDispatch();
+
     const [foodId, setFoodId] = useState('');
     const [foodName, setFoodName] = useState('');
     const [foodCategory, setFoodCategory] = useState('');
@@ -19,8 +21,6 @@ function AdminPage() {
 
     //Modal (open일때 true로 만들어 열리는 방식)
     const [modalOpen, setModalOpen] = useState(false);
-
-    const dispatch = useDispatch();
 
     const openModal = () => {
         setModalOpen(true);
@@ -40,6 +40,7 @@ function AdminPage() {
                 name: foodName,
                 mainCategory: foodCategory
             };
+            console.log('inputData 전송' + inputData);
 
             saveFood(inputData).then(result => {
                 dispatch(result);
@@ -141,9 +142,7 @@ function AdminPage() {
                                     {categoryError}
                                 </div>
                             </div>
-                            <button type="submit">
-                                추가
-                            </button>
+                            <button type="submit">추가</button>
                         </form>
                     </Modal>
                     <ListRepetition/>
