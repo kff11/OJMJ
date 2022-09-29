@@ -15,10 +15,12 @@ const initialState = {
 }
 
 export default function foodReducer(state = initialState, action) {
-    /*console.log("아래는 action.data")
+    console.log("아래는 action.data")
     console.log(action.data)
     console.log("아래는 state")
-    console.log(state)*/
+    console.log(state)
+    console.log("아래는 action type")
+    console.log(action.type)
     switch (action.type) {
         case GET_FOOD:
             return {

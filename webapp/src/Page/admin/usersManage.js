@@ -49,7 +49,7 @@ const UsersManage = () => {
                         <tbody>
                         {users.slice(offset, offset + limit).map(userRowData => (
                             <tr key={userRowData.userId}>
-                                <td>{userRowData.no}</td>
+                                <td>{userRowData.num}</td>
                                 <td>{userRowData.userId}</td>
                                 <td>{userRowData.nickname}</td>
                                 <td>

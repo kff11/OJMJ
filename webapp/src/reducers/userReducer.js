@@ -2,10 +2,10 @@ import { GET_USER, SAVE_USER, DELETE_USER, SELECT_USER} from "../actions/userAct
 
 // 초기값
 const userInitialState = {
-    lastId: 1,
+    lastId: 0,
     users: [
         {
-            no: 1,
+            num: 0,
             userId: 'Id',
             nickname: '닉네임',
             password: '비밀번호'
@@ -27,11 +27,12 @@ export default function userReducer(state = userInitialState, action) {
 
         case SAVE_USER:
             return {
+                lastId: state.lastId + 1,
                 users: state.users.concat({
                     ...action.inputData,
-                    no: state.lastId + 1,
+                    num: state.lastId + 1,
                 })
-            }
+            };
 
         case DELETE_USER:
             return {

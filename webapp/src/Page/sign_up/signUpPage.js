@@ -3,6 +3,7 @@ import '../sign_up/signUpPage.css'
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {saveUser} from "../../actions/userAction";
+import TestListRepetition from "./testListRepetition";
 
 function SignUpPage() {
     const [nickName, setNickName] = useState('');
@@ -16,13 +17,13 @@ function SignUpPage() {
         event.preventDefault();
 
         const admitData = {
-            no: '',
+            num: '',
             userId: userId,
             nickname: nickName,
             password: password
         };
         console.log("admitData 전송");
-        console.log(admitData.length);
+        console.log(saveUser(userId));
 
         dispatch(saveUser(admitData));
 
@@ -39,41 +40,47 @@ function SignUpPage() {
 
     return (
         <div className={"signup_body"}>
-            <div className={"signup_inner"}>
+            <form className={"signup_inner"} onSubmit={addUser}>
                 <a href="/"><h1>오점뭐먹</h1></a><br/>
                 <input
                     type={"text"}
-                    className={"signup_input"}
+                    value={nickName}
                     placeholder="닉네임"
+                    className={"signup_input"}
                     maxLength={10}
                     onChange={e => setNickName(e.target.value)}
                 /><br/>
                 <input
                     type={"id"}
-                    className={"signup_input"}
+                    value={userId}
                     placeholder="ID"
+                    className={"signup_input"}
                     maxLength={10}
                     onChange={e => setUserId(e.target.value)}
                 /><br/>
                 <input
                     type={'password'}
-                    className={"signup_input"}
+                    value={password}
                     placeholder="비밀번호"
+                    className={"signup_input"}
                     minLength={4}
                     maxLength={18}
                     onChange={e => setPassword(e.target.value)}
                 /><br/>
                 <input
                     type={'password'}
-                    className={"signup_input"}
+                    value={passwordConfirm}
                     placeholder="비밀번호 확인"
+                    className={"signup_input"}
                     minLength={4}
                     maxLength={18}
+                    onChange={e => setPasswordConfirm(e.target.value)}
                 /><br/>
-                <Link to="/usersmanage">
-                    <button onClick={addUser} className={"signup_btn"}>회원가입</button>
-                </Link>
-            </div>
+                {/*<Link to="/usersmanage">*/}
+                    <button type={"submit"} className={"signup_btn"}>회원가입</button>
+                {/*</Link>*/}
+            </form>
+            <TestListRepetition/>
         </div>
     );
 };

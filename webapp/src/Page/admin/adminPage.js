@@ -40,7 +40,7 @@ function AdminPage() {
                 name: foodName,
                 mainCategory: foodCategory
             };
-            console.log('inputData 전송' + inputData);
+            console.log('inputData 전송');
 
             saveFood(inputData).then(result => {
                 dispatch(result);

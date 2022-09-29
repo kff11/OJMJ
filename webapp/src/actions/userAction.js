@@ -6,9 +6,10 @@ export const SAVE_USER = 'SAVE_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const SELECT_USER = 'SELECT_USER';
 
-export const getUser = (userId, nickname, password) => ({
+export const getUser = (num, userId, nickname) => ({
     type: GET_USER,
     inputData: {
+        num: num,
         userId: userId,
         nickname: nickname
     }
@@ -17,6 +18,7 @@ export const getUser = (userId, nickname, password) => ({
 export const saveUser = (inputData) => ({
     type: SAVE_USER,
     inputData: {
+        num: inputData.num,
         userId: inputData.userId,
         nickname: inputData.nickname,
         password: inputData.password
