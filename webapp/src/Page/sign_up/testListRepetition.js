@@ -37,10 +37,8 @@ const TestListRepetition = () => {
                     <thead>
                     <tr>
                         <th>No.</th>
-                        <th>이름</th>
-                        <th>분류</th>
-                        <th>활성화<br/>상태</th>
-                        <th>선택<br/>횟수</th>
+                        <th>ID</th>
+                        <th>닉네임</th>
                         <th>삭제</th>
                     </tr>
                     </thead>

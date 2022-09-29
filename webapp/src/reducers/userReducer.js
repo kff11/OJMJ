@@ -38,7 +38,7 @@ export default function userReducer(state = userInitialState, action) {
             return {
                 ...state,
                 users: state.users.filter(row =>
-                    row.userId !== action.userId),
+                    row.userId !== action.inputData.userId),
                 lastId: state.lastId -1
             }
 
