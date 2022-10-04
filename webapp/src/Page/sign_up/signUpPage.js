@@ -11,23 +11,81 @@ function SignUpPage() {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
+    const [nickNameError, setNickNameError] = useState('');
+    const [userIdError, setUserIdError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [passwordConfirmError, setPasswordConfirmError] = useState('');
+
     const dispatch = useDispatch();
 
+    // 회원가입(회원 추가)
     const addUser = (event) => {
         event.preventDefault();
 
-        const admitData = {
-            num: '',
-            userId: userId,
-            nickname: nickName,
-            password: password
-        };
-        console.log("admitData 전송");
-        console.log(saveUser(userId));
+        if (signUpValidateForm()) {
+            if (passwordValidateForm()) {
+                const admitData = {
+                    num: '',
+                    userId: userId,
+                    nickname: nickName,
+                    password: password
+                };
+                console.log("admitData 전송");
+                console.log(saveUser(userId));
 
-        dispatch(saveUser(admitData));
+                dispatch(saveUser(admitData));
 
-        resetForm();
+                resetForm();
+                setPasswordConfirmError('')
+            }
+        }
+    }
+
+    // 필수 입력
+    const signUpValidateForm = () => {
+        let signvalidate = true;
+
+        if (!nickName) {
+            setNickNameError('닉네임을 입력해주세요')
+            signvalidate = false;
+        }else {
+            setNickNameError('')
+        }
+
+        if (!userId) {
+            setUserIdError('ID를 입력해주세요')
+            signvalidate = false;
+        }else {
+            setUserIdError('')
+        }
+
+        if (!password) {
+            setPasswordError('비밀번호를 입력해주세요')
+            signvalidate = false;
+        }else {
+            setPasswordError('')
+        }
+
+        if (!passwordConfirm) {
+            setPasswordConfirmError('비밀번호를 확인해주세요')
+            signvalidate = false;
+        }else {
+            setPasswordConfirmError('')
+        }
+
+        return signvalidate;
+    }
+
+    // 비밀번호 확인
+    const passwordValidateForm = () => {
+        let passvalidate = false;
+
+        if (password === passwordConfirm) {
+            passvalidate = true;
+        }
+        setPasswordConfirmError('작성한 비밀번호와 다릅니다.')
+
+        return passvalidate;
     }
 
     // 입력란 초기화
@@ -50,6 +108,9 @@ function SignUpPage() {
                     maxLength={10}
                     onChange={e => setNickName(e.target.value)}
                 /><br/>
+                <div className="error_state">
+                    {nickNameError}
+                </div>
                 <input
                     type={"id"}
                     value={userId}
@@ -58,6 +119,9 @@ function SignUpPage() {
                     maxLength={10}
                     onChange={e => setUserId(e.target.value)}
                 /><br/>
+                <div className="error_state">
+                    {userIdError}
+                </div>
                 <input
                     type={'password'}
                     value={password}
@@ -67,6 +131,9 @@ function SignUpPage() {
                     maxLength={18}
                     onChange={e => setPassword(e.target.value)}
                 /><br/>
+                <div className="error_state">
+                    {passwordError}
+                </div>
                 <input
                     type={'password'}
                     value={passwordConfirm}
@@ -76,6 +143,9 @@ function SignUpPage() {
                     maxLength={18}
                     onChange={e => setPasswordConfirm(e.target.value)}
                 /><br/>
+                <div className="error_state">
+                    {passwordConfirmError}
+                </div>
                 {/*<Link to="/usersmanage">*/}
                     <button type={"submit"} className={"signup_btn"}>회원가입</button>
                 {/*</Link>*/}

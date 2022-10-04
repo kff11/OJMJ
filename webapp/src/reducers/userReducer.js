@@ -10,7 +10,8 @@ const userInitialState = {
             nickname: '닉네임',
             password: '비밀번호'
         }
-    ]
+    ],
+    selectUserRow: {}
 }
 
 export default function userReducer(state = userInitialState, action) {
@@ -22,7 +23,8 @@ export default function userReducer(state = userInitialState, action) {
         case GET_USER:
             return {
                 lastId: state.lastId,
-                users: action.data
+                users: action.data,
+                selectUserRow: action.data
             }
 
         case SAVE_USER:
@@ -40,6 +42,12 @@ export default function userReducer(state = userInitialState, action) {
                 users: state.users.filter(row =>
                     row.userId !== action.inputData.userId),
                 lastId: state.lastId -1
+            }
+
+        case SELECT_USER:
+            return {
+                selectUserRow: state.users.filter(row =>
+                    row.userId === action.inputData.userId)
             }
 
         default:
