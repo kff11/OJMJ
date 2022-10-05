@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import '../sign_up/signUpPage.css'
 import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {saveUser} from "../../actions/userAction";
+import {useDispatch, useSelector} from "react-redux";
+import {saveUser, selectUser} from "../../actions/userAction";
 import TestListRepetition from "./testListRepetition";
 
 function SignUpPage() {
@@ -16,7 +16,11 @@ function SignUpPage() {
     const [passwordError, setPasswordError] = useState('');
     const [passwordConfirmError, setPasswordConfirmError] = useState('');
 
+    const {users} = useSelector(state => state.userReducer);
+
     const dispatch = useDispatch();
+
+    const onSelectUserNickName = () => dispatch(selectUser(users.userId));
 
     // 회원가입(회원 추가)
     const addUser = (event) => {
@@ -48,13 +52,17 @@ function SignUpPage() {
         if (!nickName) {
             setNickNameError('닉네임을 입력해주세요')
             signvalidate = false;
-        }else {
+        } else {
             setNickNameError('')
         }
 
         if (!userId) {
             setUserIdError('ID를 입력해주세요')
             signvalidate = false;
+        }else if (userId === onSelectUserNickName(users.userId)) {
+            setNickNameError('ID가 중복됩니다')
+            signvalidate = false;
+            console.log('중복')
         }else {
             setUserIdError('')
         }
