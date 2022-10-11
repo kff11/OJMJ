@@ -1,6 +1,5 @@
 //Action Type
 import axios from "axios";
-import {SELECT_FOOD} from "./index";
 
 export const GET_USER = 'GET_USER';
 export const SAVE_USER = 'SAVE_USER';
@@ -34,7 +33,7 @@ export const deleteUser = (userId) => ({
 })
 
 export const selectUser = (userId, nickname, password) => ({
-    type: SELECT_FOOD,
+    type: SELECT_USER,
     userId: userId,
     nickname: nickname,
     password: password

@@ -18,9 +18,9 @@ spring:
   #DATABASE
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: ${DB_PASSWORD}
-    url: ${DB_URL_DEV}
-    username: ${DB_USERNAME}
+    password: ojmj0610
+    url: jdbc:mysql://ojmj-db.crsxlygmzuzq.ap-northeast-2.rds.amazonaws.com:3306/ojmjdb
+    username: ojmj_root
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

@@ -7,9 +7,12 @@ export const SAVE_FOOD = 'SAVE_FOOD';
 export const DELETE_FOOD = 'DELETE_FOOD';
 export const SELECT_FOOD = 'SELECT_FOOD';
 
+const serverUrl = "http://localhost:8081";
+const foodUrl = "http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081";
+
 export const getFood = () => {
     return new Promise((resolve, reject) => {
-        axios.get('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food')
+        axios.get(foodUrl + '/api/food')
             .then(res => {
                 if (res.data) {
                     resolve({
@@ -27,7 +30,7 @@ export const hitFood = (foodId) => {
     return new Promise((resolve, reject) => {
         //query 형식
         //axios.get('url' + foodid) 실제로는 http://naver.com/id?id=foodid 이런식
-        axios.get('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food/' + foodId)
+        axios.get(foodUrl + '/api/food/' + foodId)
             .then(res => {
                 if (res.data) {
                     console.log(res.data)
@@ -47,7 +50,7 @@ export const saveFood = (saveData) => {
     return new Promise((resolve, reject) => {
         //parameter 형식
         //axios.post('url', {데이터])
-        axios.post('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food',
+        axios.post(foodUrl + '/api/food',
             {
                 id: saveData.id,
                 name: saveData.name,
@@ -67,7 +70,7 @@ export const saveFood = (saveData) => {
 
 export const deleteFood = (foodId) => {
     return new Promise((resolve, reject) => {
-        axios.delete('http://ec2-54-180-100-55.ap-northeast-2.compute.amazonaws.com:8081/api/food/'+ foodId)
+        axios.delete(foodUrl + '/api/food/'+ foodId)
             .then(res => {
                 if (res.data) {
                     console.log(res.data)
